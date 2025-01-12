@@ -1,0 +1,44 @@
+.App {
+  position: relative;
+  padding: 1rem;
+  flex: 1;
+  background-image: url("/images/background-mobile.png");
+  background-size: cover;
+  color: var(--colors-neutral-0);
+  text-align: center;
+  z-index: 100;
+  overflow: hidden;
+}
+.App img.logo {
+  position: relative;
+  left: 50%;
+  width: 10rem;
+  height: 1.5rem;
+  margin-top: 2rem;
+  transform: translateX(-50%);
+}
+.App img:nth-child(2) {
+  position: absolute;
+  top: 1.5rem;
+  right: 0;
+  width: 112px;
+  height: 52.2px;
+}
+.App .bars {
+  position: absolute;
+  top: -75px;
+  height: 770px;
+  width: 100vw;
+  z-index: -1;
+}
+.App .botomLinesElement {
+  position: absolute;
+  width: 301px;
+  height: 210px;
+  left: 0px;
+  bottom: 0px;
+  background-image: url("/images/pattern-squiggly-line-bottom.svg");
+  background-repeat: no-repeat;
+  z-index: -1;
+  background-size: cover;
+}

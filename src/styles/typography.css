@@ -1,0 +1,111 @@
+@font-face {
+  font-family: "Inconsolata";
+  src: url("/fonts/Inconsolata-VariableFont.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+.text-preset-1 {
+  font-family: "Inconsolata";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 60px;
+  line-height: 110%;
+  letter-spacing: -1px;
+}
+
+.text-preset-1_mobile {
+  font-family: "Inconsolata";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 110%;
+  letter-spacing: -1px;
+}
+
+.text-preset-2 {
+  font-family: "Inconsolata";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 110%;
+  letter-spacing: -1px;
+}
+
+.text-preset-2_mobile {
+  font-family: "Inconsolata";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: -1px;
+}
+
+.text-preset-3 {
+  font-family: "Inconsolata";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 110%;
+  letter-spacing: -1px;
+}
+
+.text-preset-3_mobile {
+  font-family: "Inconsolata";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 110%;
+  letter-spacing: -1px;
+}
+
+.text-preset-4mobile {
+  font-family: "Inconsolata";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 120%;
+  letter-spacing: -0.5px;
+}
+
+.text-preset-5extrabold {
+  font-family: "Inconsolata";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: -0.3px;
+}
+
+.text-preset-5 {
+  font-family: "Inconsolata";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 120%;
+  letter-spacing: -0.5px;
+}
+
+.text-preset-6 {
+  font-family: "Inconsolata";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+}
+
+.text-preset-6mobile {
+  font-family: "Inconsolata";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
+}
+
+.text-preset-7 {
+  font-family: "Inconsolata";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 120%;
+  letter-spacing: -0.2px;
+}
