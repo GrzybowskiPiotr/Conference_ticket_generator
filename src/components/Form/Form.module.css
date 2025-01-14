@@ -20,17 +20,6 @@ form label input {
   color: var(--colors-neutral-0);
 }
 
-form button.submitBtn {
-  border: none;
-  background: #f57463;
-  border-radius: 12px;
-  align-self: stretch;
-  flex-grow: 0;
-  padding: 1rem;
-  cursor: pointer;
-  color: var(--colors-neutral-900);
-}
-
 input[type="file"] {
   display: none;
 }
