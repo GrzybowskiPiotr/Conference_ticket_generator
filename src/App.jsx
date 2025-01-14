@@ -7,7 +7,7 @@ import SQUIGGLY_LINE_TOP from "/images/pattern-squiggly-line-top.svg";
 import BOTTOM_LINE_ELEMENT from "/images/pattern-squiggly-line-bottom.svg";
 
 import style from "./App.module.css";
-import { Ticket } from "./components/Ticket/TIcket";
+import { Ticket } from "./components/Ticket/Ticket";
 
 function App() {
   const [formData, setFormData] = useState(null);
