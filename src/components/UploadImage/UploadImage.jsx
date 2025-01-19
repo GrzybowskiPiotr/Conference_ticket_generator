@@ -3,7 +3,7 @@ import UPLOAD_ICON from "/images/icon-upload.svg";
 import INFO_ICON from "/images/icon-info.svg";
 import { useState } from "react";
 import { Button } from "../Button/Button";
-
+import { useWindowWidth } from "../../hooks/useWindowWidth.js";
 export function UploadImage({
   onClick,
   file,
@@ -12,6 +12,8 @@ export function UploadImage({
 }) {
   const [preview, setPreview] = useState(null);
   const [isDragOver, setIsdragOver] = useState(false);
+
+  const width = useWindowWidth();
 
   function handleDrop(e) {
     e.preventDefault();
@@ -68,8 +70,8 @@ export function UploadImage({
             setPreview(null);
           }}
           style={{
-            "--height": "22px",
-            "--width": "86px",
+            "--height": width > 996 ? "32px " : "22px",
+            "--width": width > 996 ? "96px" : "86px",
             fontSize: "12px",
             borderRadius: "4px",
           }}
@@ -80,8 +82,8 @@ export function UploadImage({
         <Button
           onClick={onClick}
           style={{
-            "--height": "22px",
-            "--width": "86px",
+            "--height": width > 996 ? "32px " : "22px",
+            "--width": width > 996 ? "96px" : "86px",
             fontSize: "12px",
             borderRadius: "4px",
           }}
@@ -96,8 +98,6 @@ export function UploadImage({
   if (file) {
     handleFile(file);
   }
-
-  console.log("upload render");
 
   return (
     <div className={`${style.uploadContainer} `}>

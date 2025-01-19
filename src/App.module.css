@@ -2,6 +2,7 @@
   position: relative;
   padding: 1rem;
   flex: 1;
+  width: 100%;
   background-image: url("/images/background-mobile.png");
   background-size: cover;
   color: var(--colors-neutral-0);
@@ -24,6 +25,20 @@
   width: 112px;
   height: 52.2px;
 }
+
+.circle {
+  position: absolute;
+}
+.circle__top {
+  top: -30px;
+  left: -30px;
+  width: 107px;
+  height: 107px;
+}
+.circle__middle {
+  top: 55%;
+  right: -7rem;
+}
 .App .bars {
   position: absolute;
   top: -75px;
@@ -33,12 +48,54 @@
 }
 .App .botomLinesElement {
   position: absolute;
-  width: 301px;
-  height: 210px;
+  width: 18.75rem;
+  height: 13rem;
   left: 0px;
   bottom: 0px;
   background-image: url("/images/pattern-squiggly-line-bottom.svg");
   background-repeat: no-repeat;
   z-index: -1;
   background-size: cover;
+}
+@media (768px <= width <= 992px) {
+  .App {
+    background-image: url("/images/background-tablet.png");
+  }
+  .App img:nth-child(2) {
+    top: 5.5rem;
+    width: 14.5rem;
+    height: 6.75rem;
+  }
+  .App .botomLinesElement {
+    width: 376px;
+    height: 276px;
+  }
+  .App img.logo {
+    width: 17.5rem;
+    height: 2.5rem;
+  }
+}
+@media (width >= 992px) {
+  .App {
+    background-image: url("/images/background-desktop.png");
+  }
+  .App img.logo {
+    margin-top: 2.5rem;
+  }
+  .circle__top {
+    left: 44px;
+    width: 217px;
+    height: 217px;
+  }
+  .circle__middle {
+    left: 65%;
+  }
+  .App .botomLinesElement {
+    width: 825px;
+    height: 476px;
+  }
+  .App img:nth-child(2) {
+    width: 446px;
+    height: 208px;
+  }
 }

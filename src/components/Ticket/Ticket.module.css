@@ -1,0 +1,58 @@
+.ticektContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 360px;
+  height: 168px;
+  padding: 1rem;
+  margin-top: 4.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url("/images/pattern-ticket.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.ticketDetailsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2.6rem;
+}
+.ticketDetailsContainer .logo {
+  height: 29px;
+  margin-right: 0.75rem;
+}
+.ticketDetailsContainer .details {
+  display: flex;
+  text-align: left;
+}
+.text {
+  margin-top: -10px;
+}
+
+.avatarImg {
+  width: 45px;
+  height: 45px;
+  border-radius: 0.75rem;
+}
+
+.ticketNumber {
+  width: 100px;
+  height: 90px;
+  position: relative;
+  transform: rotate(90deg);
+  color: var(--colors-neutral-500);
+}
+.attendeeInfo {
+  display: flex;
+  gap: 0.75rem;
+}
+.avatarImg {
+  width: 45px;
+  height: 45px;
+  margin-right: 0.75rem;
+}
+.gitName {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}

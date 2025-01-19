@@ -7,6 +7,7 @@
   border-color: #4caf50; /* Zmiana koloru obramowania podczas przeciągania */
 }
 .uploadArea {
+  height: 180px;
   border: 1px dashed var(--colors-neutral-500);
   border-radius: 0.75rem;
   margin: 0.75rem 0;
@@ -59,4 +60,12 @@
   object-fit: contain;
   border: 2px dashed #aaa;
   opacity: 0.7;
+}
+@media (width >= 996px) {
+  .previewImage {
+    margin-bottom: 0.8rem;
+  }
+  .buttonContainer {
+    gap: 1rem;
+  }
 }

@@ -1,0 +1,18 @@
+.details {
+  display: flex;
+  text-align: left;
+}
+.text {
+  margin-top: -10px;
+}
+.logo {
+  height: 29px;
+  margin-right: 0.75rem;
+}
+.img {
+  width: 45px;
+  height: 45px;
+  border-radius: 0.75rem;
+  margin-right: 0.75rem;
+  margin-top: -10px;
+}
