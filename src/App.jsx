@@ -5,20 +5,32 @@ import { Heading } from "./components/Heading/Heading";
 import LOGO_FULL from "/images/logo-full.svg";
 import SQUIGGLY_LINE_TOP from "/images/pattern-squiggly-line-top.svg";
 import BOTTOM_LINE_ELEMENT from "/images/pattern-squiggly-line-bottom.svg";
-
+import CIRCLE from "/images/pattern-circle.svg";
 import style from "./App.module.css";
 import { Ticket } from "./components/Ticket/Ticket";
 
 function App() {
   const [formData, setFormData] = useState(null);
 
+  const email = formData ? formData.get("email") : "";
+  const name = formData ? formData.get("FullName") : "";
   return (
     <div className={style.App}>
       <img className={style.logo} src={LOGO_FULL} alt="conference logo" />
       <img src={SQUIGGLY_LINE_TOP} alt="line-top" />
+      <img
+        src={CIRCLE}
+        alt="circle decoration"
+        className={`${style.circle} ${style.circle__top}`}
+      />
+      <img
+        src={CIRCLE}
+        alt="circle decoration"
+        className={`${style.circle} ${style.circle__middle}`}
+      />
       <div className={style.bars}></div>
       <formContext.Provider value={[formData, setFormData]}>
-        <Heading mode={"initial"} email="" />
+        <Heading mode={formData && "submited"} email={email} name={name} />
         {formData ? <Ticket /> : <Form />}
       </formContext.Provider>
       <div

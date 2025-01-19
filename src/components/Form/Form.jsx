@@ -12,7 +12,7 @@ export function Form() {
     register,
     handleSubmit,
     setValue,
-    formState: { errors },
+    // formState: { errors },
   } = useForm();
   const { ref, onChange, ...rest } = register("avatar", {
     required: "Pleas upload avatar image",
@@ -26,9 +26,6 @@ export function Form() {
     formData.append("email", data.email);
     formData.append("GitHubUserName", data.GitHubUserName);
     setFormData(formData);
-    for (let [key, value] of formData.entries()) {
-      console.log(`${key} : ${value instanceof File ? value.name : value}`);
-    }
   }
 
   function handleUploadInputClick() {
@@ -50,7 +47,12 @@ export function Form() {
   }
 
   return (
-    <form onSubmit={handleSubmit(submitHandler)} autoComplete="off" id="form">
+    <form
+      onSubmit={handleSubmit(submitHandler)}
+      autoComplete="off"
+      id="form"
+      className={style.form}
+    >
       <UploadImage
         onClick={handleUploadInputClick}
         file={file}
@@ -70,6 +72,7 @@ export function Form() {
       <label htmlFor="FullName">
         Full Name
         <input
+          className="text-preset-5"
           type="text"
           id="FullName"
           {...register("FullName", {
@@ -80,6 +83,7 @@ export function Form() {
       <label htmlFor="email">
         Email Adress
         <input
+          className="text-preset-5"
           autoComplete="off"
           type="email"
           placeholder="example@email.com"
@@ -90,6 +94,7 @@ export function Form() {
       <label htmlFor="GitHubUserName">
         GitHubUserName
         <input
+          className="text-preset-5"
           type="text"
           placeholder="@yourusername"
           id="GitHubUserName"
