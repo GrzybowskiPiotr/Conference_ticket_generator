@@ -1,9 +1,10 @@
-import style from "./UploadImage.module.css";
-import UPLOAD_ICON from "/images/icon-upload.svg";
-import INFO_ICON from "/images/icon-info.svg";
 import { useState } from "react";
 import { Button } from "../Button/Button";
 import { useWindowWidth } from "../../hooks/useWindowWidth.js";
+import UPLOAD_ICON from "/images/icon-upload.svg";
+import INFO_ICON from "/images/icon-info.svg";
+import style from "./UploadImage.module.css";
+
 export function UploadImage({
   onClick,
   file,
@@ -45,7 +46,6 @@ export function UploadImage({
       <button
         onClick={(e) => {
           e.preventDefault();
-
           onClick();
         }}
         className={style.button}

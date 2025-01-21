@@ -16,3 +16,6 @@
   margin-right: 0.75rem;
   margin-top: -10px;
 }
+.text p:last-child {
+  color: var(--colors-neutral-300);
+}

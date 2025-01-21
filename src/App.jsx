@@ -2,18 +2,17 @@ import { useState } from "react";
 import { formContext } from "./contexts/formContext";
 import { Form } from "./components/Form/Form";
 import { Heading } from "./components/Heading/Heading";
+import { Ticket } from "./components/Ticket/Ticket";
 import LOGO_FULL from "/images/logo-full.svg";
 import SQUIGGLY_LINE_TOP from "/images/pattern-squiggly-line-top.svg";
 import BOTTOM_LINE_ELEMENT from "/images/pattern-squiggly-line-bottom.svg";
 import CIRCLE from "/images/pattern-circle.svg";
 import style from "./App.module.css";
-import { Ticket } from "./components/Ticket/Ticket";
 
 function App() {
   const [formData, setFormData] = useState(null);
-
-  const email = formData ? formData.get("email") : "";
-  const name = formData ? formData.get("FullName") : "";
+  const email = formData ? formData["email"] : "";
+  const name = formData ? formData["FullName"] : "";
   return (
     <div className={style.App}>
       <img className={style.logo} src={LOGO_FULL} alt="conference logo" />

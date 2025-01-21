@@ -16,7 +16,7 @@ export function TicketRow({
       />
       <div className={styles.text}>
         <p className={firstParagraphTypoPreset}>{firstParagraph}</p>
-        <p className={secondParagrapheTypoPreset}>{secondParagraphe}</p>
+        <div className={secondParagrapheTypoPreset}>{secondParagraphe}</div>
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ export function Form() {
     register,
     handleSubmit,
     setValue,
-    // formState: { errors },
+    formState: { errors },
   } = useForm();
   const { ref, onChange, ...rest } = register("avatar", {
     required: "Pleas upload avatar image",
@@ -20,12 +20,7 @@ export function Form() {
   const [_, setFormData] = useContext(formContext);
 
   function submitHandler(data) {
-    const formData = new FormData();
-    formData.append("avatar", data.avatar[0]);
-    formData.append("FullName", data.FullName);
-    formData.append("email", data.email);
-    formData.append("GitHubUserName", data.GitHubUserName);
-    setFormData(formData);
+    setFormData(data);
   }
 
   function handleUploadInputClick() {
@@ -33,17 +28,21 @@ export function Form() {
   }
 
   function handleInputChange(e) {
-    console.log("input Change");
     const selectedFile = e.target.files[0];
     if (selectedFile) {
       setFile(selectedFile);
-      setValue("avatar", e.target.files);
+      setValue("avatar", selectedFile);
     }
   }
 
   function removeButtonClickHandler() {
     setFile(null);
     inputUploadFileRef.current.value = "";
+  }
+
+  function setfileFromDrop(file) {
+    setFile(file);
+    setValue("avatar", file);
   }
 
   return (
@@ -56,16 +55,14 @@ export function Form() {
       <UploadImage
         onClick={handleUploadInputClick}
         file={file}
-        setFile={setFile}
+        setFile={setfileFromDrop}
         removeButtonClickHandler={removeButtonClickHandler}
       />
       <input
         type="file"
         ref={inputUploadFileRef}
         accept="image/jpeg, image/png"
-        onChange={(e) => {
-          handleInputChange(e);
-        }}
+        onChange={(e) => handleInputChange(e)}
         {...rest}
       />
 

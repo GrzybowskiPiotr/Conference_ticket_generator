@@ -45,6 +45,7 @@
   height: 770px;
   width: 100vw;
   z-index: -1;
+  background-image: url("/images/pattern-lines.svg");
 }
 .App .botomLinesElement {
   position: absolute;
