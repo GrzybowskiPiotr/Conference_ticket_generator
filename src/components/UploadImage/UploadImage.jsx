@@ -1,14 +1,16 @@
-import style from "./UploadImage.module.css";
-import UPLOAD_ICON from "/images/icon-upload.svg";
-import INFO_ICON from "/images/icon-info.svg";
 import { useState } from "react";
 import { Button } from "../Button/Button";
 import { useWindowWidth } from "../../hooks/useWindowWidth.js";
+import UPLOAD_ICON from "/images/icon-upload.svg";
+import INFO_ICON from "/images/icon-info.svg";
+import style from "./UploadImage.module.css";
+
 export function UploadImage({
   onClick,
   file,
   setFile,
   removeButtonClickHandler,
+  error,
 }) {
   const [preview, setPreview] = useState(null);
   const [isDragOver, setIsdragOver] = useState(false);
@@ -45,7 +47,6 @@ export function UploadImage({
       <button
         onClick={(e) => {
           e.preventDefault();
-
           onClick();
         }}
         className={style.button}
@@ -119,10 +120,12 @@ export function UploadImage({
       >
         {preview ? UploadedImageView : uploadButton}
       </div>
-      <div className={style.info}>
+      <div className={`${style.info} ${error ? style.errorInfo : ""}`}>
         <img src={INFO_ICON} alt="info icon" />
-        <p className="text-preset-7">
-          Upload your photo (JPG or PNG, max size: 500KB).
+        <p className="text-preset-7" id="avatar-hint">
+          {error
+            ? "File too large. Please upload a photo under 500KB."
+            : "Upload your photo (JPG or PNG, max size: 500KB)."}
         </p>
       </div>
     </div>

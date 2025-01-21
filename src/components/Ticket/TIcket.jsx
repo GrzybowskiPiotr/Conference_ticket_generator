@@ -1,16 +1,18 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { formContext } from "../../contexts/formContext";
 import { useFileReader } from "../../hooks/useFileReader.js";
 import { TicketRow } from "../TicetRow/TicketRow.jsx";
 import LOGO from "/images/logo-mark.svg";
 import GITICON from "/images/icon-github.svg";
 import styles from "./Ticket.module.css";
+
 export function Ticket() {
+  const [tickedNumber, setTickedNumber] = useState(null);
   const [formData] = useContext(formContext);
 
-  const name = formData.get("FullName");
-  const gitName = formData.get("GitHubUserName");
-  const avatar = formData.get("avatar");
+  const name = formData["FullName"];
+  const gitName = formData["GitHubUserName"];
+  const avatar = formData["avatar"];
 
   const { preview } = useFileReader(avatar);
 
@@ -20,6 +22,38 @@ export function Ticket() {
       <p className="text-preset-6mobile">{gitName}</p>
     </div>
   );
+
+  useEffect(() => {
+    function generateNumber() {
+      const uintArray = new Uint8Array(5);
+      self.crypto.getRandomValues(uintArray);
+      const randomeNumbers = [];
+      for (let num of uintArray) {
+        randomeNumbers.push(num % 10);
+      }
+      return randomeNumbers.join("");
+    }
+
+    function localStorageToSet(localstorageStr) {
+      return new Set(JSON.parse(localstorageStr));
+    }
+    let generatedNumber = `#${generateNumber()}`;
+    let ticketsArray = [];
+    if (!localStorage.tickets) {
+      ticketsArray.push(generatedNumber);
+      localStorage.tickets = JSON.stringify(ticketsArray);
+      setTickedNumber(generatedNumber);
+    } else {
+      const set = localStorageToSet(localStorage.tickets);
+      while (set.has(generatedNumber)) {
+        generatedNumber = generateNumber();
+      }
+      set.add(generatedNumber);
+      ticketsArray = Array.from(set);
+      localStorage.tickets = JSON.stringify(ticketsArray);
+      setTickedNumber(generatedNumber);
+    }
+  }, []);
 
   return (
     <div aria-description="Ticekt image" className={styles.ticektContainer}>
@@ -41,7 +75,7 @@ export function Ticket() {
         />
       </div>
       <div className={`${styles.ticketNumber} text-preset-3_mobile`}>
-        ticket nr
+        {tickedNumber}
       </div>
     </div>
   );

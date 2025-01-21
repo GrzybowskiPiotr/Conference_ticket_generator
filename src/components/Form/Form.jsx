@@ -1,6 +1,7 @@
 import { useContext, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { formContext } from "../../contexts/formContext";
+import { InputWithLabel } from "../InputWithLabel/InputWithLabel";
 import { Button } from "../Button/Button";
 import { UploadImage } from "../UploadImage/UploadImage";
 import style from "./Form.module.css";
@@ -12,20 +13,28 @@ export function Form() {
     register,
     handleSubmit,
     setValue,
-    // formState: { errors },
+    formState: { errors },
   } = useForm();
   const { ref, onChange, ...rest } = register("avatar", {
     required: "Pleas upload avatar image",
   });
+  const fullNameRegister = {
+    ...register("FullName", {
+      required: "Full Name is required",
+    }),
+  };
+  const emailRegister = {
+    ...register("email", { required: "Email field is requierd!" }),
+  };
+  const gitUserNameRegister = {
+    ...register("GitHubUserName", {
+      required: "GitHub user name is required!",
+    }),
+  };
   const [_, setFormData] = useContext(formContext);
 
   function submitHandler(data) {
-    const formData = new FormData();
-    formData.append("avatar", data.avatar[0]);
-    formData.append("FullName", data.FullName);
-    formData.append("email", data.email);
-    formData.append("GitHubUserName", data.GitHubUserName);
-    setFormData(formData);
+    setFormData(data);
   }
 
   function handleUploadInputClick() {
@@ -33,11 +42,10 @@ export function Form() {
   }
 
   function handleInputChange(e) {
-    console.log("input Change");
     const selectedFile = e.target.files[0];
     if (selectedFile) {
       setFile(selectedFile);
-      setValue("avatar", e.target.files);
+      setValue("avatar", selectedFile);
     }
   }
 
@@ -46,6 +54,13 @@ export function Form() {
     inputUploadFileRef.current.value = "";
   }
 
+  function setfileFromDrop(file) {
+    setFile(file);
+    setValue("avatar", file);
+  }
+  // form error usage
+  console.log(errors ? errors.GitHubUserName : "Nie błędów");
+  //form error usage
   return (
     <form
       onSubmit={handleSubmit(submitHandler)}
@@ -56,53 +71,41 @@ export function Form() {
       <UploadImage
         onClick={handleUploadInputClick}
         file={file}
-        setFile={setFile}
+        setFile={setfileFromDrop}
         removeButtonClickHandler={removeButtonClickHandler}
+        error={errors.avatar ? true : false}
       />
       <input
         type="file"
         ref={inputUploadFileRef}
         accept="image/jpeg, image/png"
-        onChange={(e) => {
-          handleInputChange(e);
-        }}
+        onChange={(e) => handleInputChange(e)}
         {...rest}
+        aria-invalid={errors.avatar ? true : false}
+        aria-describedby="avatar-hint"
+      />
+      <InputWithLabel
+        label={"Full Name"}
+        id={"FullName"}
+        formRegister={fullNameRegister}
+        error={errors.FullName ? true : false}
       />
 
-      <label htmlFor="FullName">
-        Full Name
-        <input
-          className="text-preset-5"
-          type="text"
-          id="FullName"
-          {...register("FullName", {
-            required: "Full Name is required",
-          })}
-        />
-      </label>
-      <label htmlFor="email">
-        Email Adress
-        <input
-          className="text-preset-5"
-          autoComplete="off"
-          type="email"
-          placeholder="example@email.com"
-          id="email"
-          {...register("email", { required: "Email field is requierd!" })}
-        />
-      </label>
-      <label htmlFor="GitHubUserName">
-        GitHubUserName
-        <input
-          className="text-preset-5"
-          type="text"
-          placeholder="@yourusername"
-          id="GitHubUserName"
-          {...register("GitHubUserName", {
-            required: "GitHub user name is required!",
-          })}
-        />
-      </label>
+      <InputWithLabel
+        label={"Email"}
+        placeholder={"example@email.com"}
+        id={"email"}
+        formRegister={emailRegister}
+        type="email"
+        error={errors.email ? true : false}
+      />
+
+      <InputWithLabel
+        id={"GitHubUserName"}
+        placeholder="@yourusername"
+        formRegister={gitUserNameRegister}
+        error={errors.GitHubUserName ? true : false}
+      />
       <Button
         typographyPreset={"text-preset-5extrabold"}
         style={{
