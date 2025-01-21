@@ -10,6 +10,7 @@ export function UploadImage({
   file,
   setFile,
   removeButtonClickHandler,
+  error,
 }) {
   const [preview, setPreview] = useState(null);
   const [isDragOver, setIsdragOver] = useState(false);
@@ -119,10 +120,12 @@ export function UploadImage({
       >
         {preview ? UploadedImageView : uploadButton}
       </div>
-      <div className={style.info}>
+      <div className={`${style.info} ${error ? style.errorInfo : ""}`}>
         <img src={INFO_ICON} alt="info icon" />
-        <p className="text-preset-7">
-          Upload your photo (JPG or PNG, max size: 500KB).
+        <p className="text-preset-7" id="avatar-hint">
+          {error
+            ? "File too large. Please upload a photo under 500KB."
+            : "Upload your photo (JPG or PNG, max size: 500KB)."}
         </p>
       </div>
     </div>

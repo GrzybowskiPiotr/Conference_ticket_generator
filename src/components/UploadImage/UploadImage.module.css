@@ -73,6 +73,14 @@
   border: 2px dashed #aaa;
   opacity: 0.7;
 }
+.errorInfo {
+  color: var(--colors-orange-500);
+}
+.errorInfo img {
+  filter: brightness(0) saturate(100%) invert(67%) sepia(72%) saturate(2514%)
+    hue-rotate(319deg) brightness(100%) contrast(93%);
+}
+
 @media (width >= 996px) {
   .previewImage {
     margin-bottom: 0.8rem;
