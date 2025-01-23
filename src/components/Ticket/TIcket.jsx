@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { formContext } from "../../contexts/formContext";
-import { useFileReader } from "../../hooks/useFileReader.js";
+import { useFileReader } from "../../hooks/useFileReader.jsx";
 import { TicketRow } from "../TicetRow/TicketRow.jsx";
 import LOGO from "/images/logo-mark.svg";
 import GITICON from "/images/icon-github.svg";

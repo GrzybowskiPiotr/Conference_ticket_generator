@@ -1,4 +1,4 @@
-import { useWindowWidth } from "../../hooks/useWindowWidth";
+import { useWindowWidth } from "../../hooks/useWindowWidth.jsx";
 import style from "./Heading.module.css";
 
 export function Heading({ mode, email, name }) {
@@ -13,8 +13,10 @@ export function Heading({ mode, email, name }) {
     HedingtypoGraphypreset = "text-preset-1";
     subHEadingTypographyPreset = "text-preset-4";
   }
+
   const InitSubHeadingText =
     "Secure your spot at next year's biggest coding conference.";
+
   const SubmitedSubHeadingText = ({ email }) => (
     <>
       {"We've emailed your ticket to"}{" "}

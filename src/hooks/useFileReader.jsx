@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 
 export function useFileReader(file) {
   const [preview, setPreview] = useState(null);
-  const [error, setError] = useState(null);
+  const [errorFileType, setErrorFileType] = useState(null);
 
   useEffect(() => {
     if (!file) {
       setPreview(null);
-      setError(null);
+      setErrorFileType(null);
       return;
     }
 
@@ -15,12 +15,12 @@ export function useFileReader(file) {
       file.size > 500 * 1024 ||
       !["image/jpeg", "image/png"].includes(file.type)
     ) {
-      setError("file must be in .jpeg or .png and be max 500Kb");
+      setErrorFileType("file must be in .jpeg or .png and be max 500Kb");
       setPreview(null);
       return;
     }
 
-    setError(null);
+    setErrorFileType(null);
     const reader = new FileReader();
     reader.onload = () => {
       setPreview(reader.result);
@@ -32,5 +32,5 @@ export function useFileReader(file) {
     };
   }, [file]);
 
-  return { preview, error };
+  return { preview, errorFileType };
 }

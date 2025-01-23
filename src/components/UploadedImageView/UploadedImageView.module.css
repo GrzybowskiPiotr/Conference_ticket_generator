@@ -1,0 +1,19 @@
+.buttonContainer {
+  margin-top: 1rem;
+  display: inline-flex;
+  gap: 0.5rem;
+}
+.previewImage {
+  max-width: 50px;
+  max-height: 50px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+@media (width >= 996px) {
+  .previewImage {
+    margin-bottom: 0.8rem;
+  }
+  .buttonContainer {
+    gap: 1rem;
+  }
+}
