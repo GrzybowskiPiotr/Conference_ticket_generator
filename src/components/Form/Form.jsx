@@ -16,19 +16,34 @@ export function Form() {
     formState: { errors },
   } = useForm();
   const { ref, onChange, ...rest } = register("avatar", {
-    required: "Pleas upload avatar image",
+    required: "Pleas upload avatar image.",
   });
   const fullNameRegister = {
     ...register("FullName", {
       required: "Full Name is required",
+      pattern: {
+        value: /^[A-Za-z]+\s[A-Za-z]+$/gm,
+        message:
+          "Full Name must include first and last name separated by a space.",
+      },
     }),
   };
   const emailRegister = {
-    ...register("email", { required: "Email field is requierd!" }),
+    ...register("email", {
+      required: "Email field is requierd!",
+      pattern: {
+        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+        message: "Please provide valid email address.",
+      },
+    }),
   };
   const gitUserNameRegister = {
     ...register("GitHubUserName", {
-      required: "GitHub user name is required!",
+      required: "GitHub Username is required!",
+      pattern: {
+        value: /^[@].+$/gm,
+        message: "Please provide a Git username that starts with '@'.",
+      },
     }),
   };
   const [_, setFormData] = useContext(formContext);
@@ -58,9 +73,7 @@ export function Form() {
     setFile(file);
     setValue("avatar", file);
   }
-  // form error usage
-  console.log(errors ? errors.GitHubUserName : "Nie błędów");
-  //form error usage
+
   return (
     <form
       onSubmit={handleSubmit(submitHandler)}
@@ -73,7 +86,7 @@ export function Form() {
         file={file}
         setFile={setfileFromDrop}
         removeButtonClickHandler={removeButtonClickHandler}
-        error={errors.avatar ? true : false}
+        error={errors.avatar}
       />
       <input
         type="file"
@@ -88,7 +101,7 @@ export function Form() {
         label={"Full Name"}
         id={"FullName"}
         formRegister={fullNameRegister}
-        error={errors.FullName ? true : false}
+        error={errors.FullName}
       />
 
       <InputWithLabel
@@ -97,14 +110,15 @@ export function Form() {
         id={"email"}
         formRegister={emailRegister}
         type="email"
-        error={errors.email ? true : false}
+        error={errors.email}
       />
 
       <InputWithLabel
+        label={"GitHub Username"}
         id={"GitHubUserName"}
         placeholder="@yourusername"
         formRegister={gitUserNameRegister}
-        error={errors.GitHubUserName ? true : false}
+        error={errors.GitHubUserName}
       />
       <Button
         typographyPreset={"text-preset-5extrabold"}

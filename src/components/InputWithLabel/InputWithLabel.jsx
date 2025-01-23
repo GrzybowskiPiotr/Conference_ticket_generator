@@ -1,4 +1,5 @@
 import style from "./InputWithLabel.module.css";
+import INFO_ICON from "/images/icon-info.svg";
 export function InputWithLabel({
   label,
   id,
@@ -8,7 +9,7 @@ export function InputWithLabel({
   error,
 }) {
   return (
-    <>
+    <div>
       <label htmlFor={id}>
         {label}
         <input
@@ -19,7 +20,12 @@ export function InputWithLabel({
           {...formRegister}
         />
       </label>
-      {error && <p>Dupa</p>}
-    </>
+      {error && (
+        <p className={`${style.errorP} text-preset-7`}>
+          <img src={INFO_ICON} alt="info icon" />
+          {error.message}
+        </p>
+      )}
+    </div>
   );
 }

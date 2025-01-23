@@ -5,7 +5,7 @@
 }
 
 .uploadContainer .dragOver {
-  border-color: #4caf50; /* border color change in process of draged over*/
+  border-color: #4caf50;
 }
 .uploadArea {
   height: 180px;
@@ -79,6 +79,7 @@
 .errorInfo img {
   filter: brightness(0) saturate(100%) invert(67%) sepia(72%) saturate(2514%)
     hue-rotate(319deg) brightness(100%) contrast(93%);
+  margin-right: 0.5rem;
 }
 
 @media (width >= 996px) {
