@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { UploadedImageView } from "../UploadedImageView/UploadedImageView.jsx";
 import { UploadButton } from "../UploadButton/UploadButton.jsx";
-import { useFileReader } from "../../hooks/useFileReader.jsx";
+import { useFileReader } from "../../hooks/useFileReader.js";
 import INFO_ICON from "/images/icon-info.svg";
 import style from "./UploadImage.module.css";
 
@@ -13,7 +13,7 @@ export function UploadImage({
   error,
 }) {
   const [isDragOver, setIsdragOver] = useState(false);
-  const { preview, errorFileType } = useFileReader(file);
+  const { preview } = useFileReader(file);
 
   function handleDrop(e) {
     e.preventDefault();
@@ -23,7 +23,7 @@ export function UploadImage({
       setFile(file);
     }
   }
-
+  console.log(error?.ref);
   return (
     <div className={`${style.uploadContainer} `}>
       <h2 className={`text-preset-5`}>Upload Avatar</h2>
@@ -55,12 +55,8 @@ export function UploadImage({
         <div className={`${style.info} ${error ? style.errorInfo : ""}`}>
           <img src={INFO_ICON} alt="info icon" />
           <p className="text-preset-7" id="avatar-hint">
-            {/* {errorFileType && errorFileType}
-          {error
-            ? `${error.message}`
-            : "Upload your photo (JPG or PNG, max size: 500KB)."} */}
-            {errorFileType || error
-              ? `${errorFileType || error.message} `
+            {error
+              ? error.message
               : "Upload your photo (JPG or PNG, max size: 500KB)."}
           </p>
         </div>

@@ -7,6 +7,7 @@ import { UploadImage } from "../UploadImage/UploadImage";
 import style from "./Form.module.css";
 
 export function Form() {
+  const [_, setFormData] = useContext(formContext);
   const [file, setFile] = useState(null);
   const inputUploadFileRef = useRef(null);
   const {
@@ -15,9 +16,24 @@ export function Form() {
     setValue,
     formState: { errors },
   } = useForm();
+
+  // eslint-disable-next-line no-unused-vars
   const { ref, onChange, ...rest } = register("avatar", {
     required: "Pleas upload avatar image.",
+    validate: function (file) {
+      if (!file) {
+        return "No file selected";
+      }
+      if (file.type !== "image/png" && file.type !== "image/jpeg") {
+        return "Only PNG and JPEG format are supported";
+      }
+      if (file.size > 500 * 1024) {
+        return "File size must be less than 500 kB";
+      }
+      return true;
+    },
   });
+
   const fullNameRegister = {
     ...register("FullName", {
       required: "Full Name is required",
@@ -46,14 +62,13 @@ export function Form() {
       },
     }),
   };
-  const [_, setFormData] = useContext(formContext);
+  function removeButtonClickHandler() {
+    setFile(null);
+    inputUploadFileRef.current.value = "";
+  }
 
   function submitHandler(data) {
     setFormData(data);
-  }
-
-  function handleUploadInputClick() {
-    inputUploadFileRef.current.click();
   }
 
   function handleInputChange(e) {
@@ -62,11 +77,6 @@ export function Form() {
       setFile(selectedFile);
       setValue("avatar", selectedFile);
     }
-  }
-
-  function removeButtonClickHandler() {
-    setFile(null);
-    inputUploadFileRef.current.value = "";
   }
 
   function setfileFromDrop(file) {
@@ -82,7 +92,7 @@ export function Form() {
       className={style.form}
     >
       <UploadImage
-        onClick={handleUploadInputClick}
+        onClick={() => inputUploadFileRef.current.click()}
         file={file}
         setFile={setfileFromDrop}
         removeButtonClickHandler={removeButtonClickHandler}
@@ -92,11 +102,12 @@ export function Form() {
         type="file"
         ref={inputUploadFileRef}
         accept="image/jpeg, image/png"
-        onChange={(e) => handleInputChange(e)}
+        onChange={handleInputChange}
         {...rest}
         aria-invalid={errors.avatar ? true : false}
         aria-describedby="avatar-hint"
       />
+
       <InputWithLabel
         label={"Full Name"}
         id={"FullName"}

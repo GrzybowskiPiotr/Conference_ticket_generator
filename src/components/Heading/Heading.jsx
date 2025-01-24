@@ -1,4 +1,4 @@
-import { useWindowWidth } from "../../hooks/useWindowWidth.jsx";
+import { useWindowWidth } from "../../hooks/useWindowWidth.js";
 import style from "./Heading.module.css";
 
 export function Heading({ mode, email, name }) {
