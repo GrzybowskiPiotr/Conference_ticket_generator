@@ -3,12 +3,12 @@ import { formContext } from "./contexts/formContext";
 import { Form } from "./components/Form/Form";
 import { Heading } from "./components/Heading/Heading";
 import { Ticket } from "./components/Ticket/Ticket";
+import { Footer } from "./components/Footer/Footer";
 import LOGO_FULL from "/images/logo-full.svg";
 import SQUIGGLY_LINE_TOP from "/images/pattern-squiggly-line-top.svg";
 import BOTTOM_LINE_ELEMENT from "/images/pattern-squiggly-line-bottom.svg";
 import CIRCLE from "/images/pattern-circle.svg";
 import style from "./App.module.css";
-import { Footer } from "./components/Footer/Footer";
 
 function App() {
   const [formData, setFormData] = useState(null);

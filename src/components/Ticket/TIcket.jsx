@@ -37,8 +37,10 @@ export function Ticket() {
     function localStorageToSet(localstorageStr) {
       return new Set(JSON.parse(localstorageStr));
     }
+
     let generatedNumber = `#${generateNumber()}`;
     let ticketsArray = [];
+
     if (!localStorage.tickets) {
       ticketsArray.push(generatedNumber);
       localStorage.tickets = JSON.stringify(ticketsArray);
@@ -74,7 +76,10 @@ export function Ticket() {
           secondParagrapheTypoPreset={"text-preset-6mobile"}
         />
       </div>
-      <div className={`${styles.ticketNumber} text-preset-3_mobile`}>
+      <div
+        className={`${styles.ticketNumber} text-preset-3_mobile`}
+        data-testid="ticket-number"
+      >
         {tickedNumber}
       </div>
     </div>

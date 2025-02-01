@@ -1,13 +1,13 @@
 import { useContext, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import { formContext } from "../../contexts/formContext";
-import { InputWithLabel } from "../InputWithLabel/InputWithLabel";
-import { Button } from "../Button/Button";
-import { UploadImage } from "../UploadImage/UploadImage";
+import { formContext } from "../../contexts/formContext.js";
+import { InputWithLabel } from "../InputWithLabel/InputWithLabel.jsx";
+import { Button } from "../Button/Button.jsx";
+import { UploadImage } from "../UploadImage/UploadImage.jsx";
 import style from "./Form.module.css";
 
 export function Form() {
-  const [_, setFormData] = useContext(formContext);
+  const [formData, setFormData] = useContext(formContext);
   const [file, setFile] = useState(null);
   const inputUploadFileRef = useRef(null);
   const {
@@ -90,6 +90,7 @@ export function Form() {
       autoComplete="off"
       id="form"
       className={style.form}
+      data-testid="form"
     >
       <UploadImage
         onClick={() => inputUploadFileRef.current.click()}

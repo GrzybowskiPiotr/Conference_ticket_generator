@@ -5,13 +5,3 @@
   color: var(--colors-neutral-300);
   padding: 0 0.5rem;
 }
-.email {
-  color: var(--colors-orange-500);
-}
-
-.name {
-  background: linear-gradient(90deg, #f57463 0%, #ffffff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}

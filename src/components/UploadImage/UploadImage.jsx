@@ -23,7 +23,6 @@ export function UploadImage({
       setFile(file);
     }
   }
-  console.log(error?.ref);
   return (
     <div className={`${style.uploadContainer} `}>
       <h2 className={`text-preset-5`}>Upload Avatar</h2>
