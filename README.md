@@ -44,7 +44,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Conference_ticket_generator GitHub](https://github.com/GrzybowskiPiotr/Conference_ticket_generator)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Live Demo](https://conference-ticket-generator-o9d8dmrat.vercel.app/)
 
 ## My process
 
