@@ -16,7 +16,7 @@ function App() {
   const name = formData ? formData["FullName"] : "";
   return (
     <>
-      <div className={style.App}>
+      <main className={style.App}>
         <img className={style.logo} src={LOGO_FULL} alt="conference logo" />
         <img src={SQUIGGLY_LINE_TOP} alt="line-top" />
         <img
@@ -38,7 +38,7 @@ function App() {
           className={style.botomLinesElement}
           style={{ backgroundImage: `url(${BOTTOM_LINE_ELEMENT})` }}
         ></div>
-      </div>
+      </main>
       <Footer />
     </>
   );

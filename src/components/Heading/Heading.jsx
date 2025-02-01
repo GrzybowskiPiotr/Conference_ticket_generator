@@ -24,7 +24,7 @@ export function Heading({ mode, email, name }) {
   const [firstName, lastName] = name ? name.split(" ") : "";
 
   return (
-    <>
+    <header>
       <h1 className={`${style.heading} ${HeadingTypographyPreset}`}>
         {isSubmitted ? (
           <SubmitedHeading firstName={firstName} lastName={lastName} />
@@ -39,6 +39,6 @@ export function Heading({ mode, email, name }) {
           InitSubHeadingText
         )}
       </p>
-    </>
+    </header>
   );
 }
