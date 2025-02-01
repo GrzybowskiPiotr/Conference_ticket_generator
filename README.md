@@ -61,6 +61,15 @@ Users should be able to:
 - [react-testing-library](http://https://testing-library.com/)
 - [Playwrite](https://playwright.dev/)
 
+### What I learned
+
+In this project, I learned to :
+
+- use FileReader to handle file transfer.
+- reacthookForm - to handle the form and validation of the form.
+- react Testing Library - to write component tests.
+- playwright - for writing End to End tests.
+
 ## Author
 
 - Frontend Mentor - [@GrzybowskiPiotr](https://www.frontendmentor.io/profile/GrzybowskiPiotr)
